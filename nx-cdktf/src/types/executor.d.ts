@@ -1,5 +1,12 @@
+import { ProjectConfiguration, TargetConfiguration } from '@nx/devkit';
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface CDKTFExecutorBaseOptions {}
+export interface CDKTFExecutorBaseOptions {
+  /**
+   * The name of the NX project
+   */
+  project?: string;
+}
 export interface CDKTFSynthOptions extends CDKTFExecutorBaseOptions {
   /**
    * Output directory for the synthesized Terraform config
@@ -162,12 +169,17 @@ export interface CDKTFExecutorCommandOptions {
   'provider get': CDKTFProviderGetOptions;
   'provider list': CDKTFProviderListOptions;
   'provider upgrade': CDKTFProviderUpgradeOptions;
-  // get: string;
-  // import: string;
-  // diff: string;
-  // ls: string;
-  // version: string;
-  // init: string;
+}
+
+export interface CDKTFExecutors {
+  synth?: TargetConfiguration<CDKTFSynthOptions>;
+  deploy?: TargetConfiguration<CDKTFDeployOptions>;
+  destroy?: TargetConfiguration<CDKTFDestroyOptions>;
+  'add-provider'?: TargetConfiguration<CDKTFProviderAddOptions>;
+  'get-providers'?: TargetConfiguration<CDKTFProviderGetOptions>;
+  'list-providers'?: TargetConfiguration<CDKTFProviderListOptions>;
+  'upgrade-provider'?: TargetConfiguration<CDKTFProviderUpgradeOptions>;
+  [key: string]: TargetConfiguration;
 }
 
 export interface CDKTFExecutorCommandArgs {

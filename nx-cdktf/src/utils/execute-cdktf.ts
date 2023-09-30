@@ -16,16 +16,15 @@ export const executeCDKTF = <
   new Promise((resolve, reject) => {
     ctx.projectName;
     // split positionals to pass as args
-    const [positionals, extra] = splitArgs(options, args);
+    const [positionals, rest] = splitArgs(options, args);
     // remove entry from options list
-    const { entry, ...rest } = extra;
 
     const projectConfig = ctx.projectGraph.nodes[ctx.projectName];
     const appRoot = joinPathFragments(ctx.root, projectConfig.data.root);
 
     // build the code to execute
     const a = esbuild.buildSync({
-      entryPoints: [joinPathFragments(appRoot, entry)],
+      entryPoints: [joinPathFragments(appRoot, '')],
       bundle: true,
       outfile: 'dist/apps/cdktf/main.js',
       platform: 'node',
@@ -55,6 +54,7 @@ export const executeCDKTF = <
         cwd: appRoot,
       }
     );
+
     child.stdout.on('data', (data) => {
       console.log(data.toString());
     });

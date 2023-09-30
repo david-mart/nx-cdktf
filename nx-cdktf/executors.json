@@ -4,6 +4,36 @@
       "implementation": "./src/executors/synth/executor",
       "schema": "./src/executors/synth/schema.json",
       "description": "synth executor"
+    },
+    "deploy": {
+      "implementation": "./src/executors/deploy/executor",
+      "schema": "./src/executors/deploy/schema.json",
+      "description": "deploy executor"
+    },
+    "destroy": {
+      "implementation": "./src/executors/destroy/executor",
+      "schema": "./src/executors/destroy/schema.json",
+      "description": "destroy executor"
+    },
+    "add-provider": {
+      "implementation": "./src/executors/provider/add/executor",
+      "schema": "./src/executors/provider/add/schema.json",
+      "description": "add-provider executor"
+    },
+    "get-providers": {
+      "implementation": "./src/executors/provider/get/executor",
+      "schema": "./src/executors/provider/get/schema.json",
+      "description": "get-providers executor"
+    },
+    "list-providers": {
+      "implementation": "./src/executors/provider/list/executor",
+      "schema": "./src/executors/provider/list/schema.json",
+      "description": "list-providers executor"
+    },
+    "upgrade-provider": {
+      "implementation": "./src/executors/provider/upgrade/executor",
+      "schema": "./src/executors/provider/upgrade/schema.json",
+      "description": "upgrade-provider executor"
     }
   }
 }

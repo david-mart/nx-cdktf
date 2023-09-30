@@ -15,6 +15,10 @@
       "x-prompt": {
         "message": "Enter provider name",
         "type": "input"
+      },
+      "$default": {
+        "$source": "argv",
+        "index": 0
       }
     }
   },
