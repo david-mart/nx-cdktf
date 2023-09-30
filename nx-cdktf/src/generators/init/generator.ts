@@ -5,6 +5,7 @@ import {
   Tree,
   addDependenciesToPackageJson,
   installPackagesTask,
+  joinPathFragments,
 } from '@nx/devkit';
 import * as path from 'path';
 import * as crypto from 'crypto';
@@ -17,12 +18,21 @@ export async function initGenerator(tree: Tree, options: InitGeneratorSchema) {
     { cdktf: 'latest' },
     { constructs: 'latest' }
   );
-  const projectRoot = `libs/${options.name}`;
+  const projectRoot =
+    options.directory || joinPathFragments('apps', options.name);
   addProjectConfiguration(tree, options.name, {
     root: projectRoot,
     projectType: 'application',
     sourceRoot: `${projectRoot}/src`,
-    targets: {},
+    targets: {
+      synth: {
+        executor: 'nx-cdktf:synth',
+        options: {
+          entry: `main.ts`,
+          output: joinPathFragments(projectRoot, 'cdktf.out'),
+        },
+      },
+    },
   });
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
     ...options,

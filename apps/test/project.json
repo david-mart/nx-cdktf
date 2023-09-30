@@ -1,0 +1,15 @@
+{
+  "name": "test",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/test/src",
+  "targets": {
+    "synth": {
+      "executor": "nx-cdktf:synth",
+      "options": {
+        "entry": "main.ts",
+        "output": "apps/test/cdktf.out"
+      }
+    }
+  }
+}

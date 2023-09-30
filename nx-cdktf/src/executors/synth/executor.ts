@@ -1,4 +1,4 @@
-import { CDKTFSynthOptions } from '../../types/executor';
+import { CDKTFSynthOptions } from './schema';
 import { ExecutorContext } from '@nx/devkit';
 import { executeCDKTF } from '../../utils/execute-cdktf';
 

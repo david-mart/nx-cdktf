@@ -16,7 +16,6 @@ export async function stackGenerator(
   tree: Tree,
   options: StackGeneratorSchema
 ) {
-
   const project = readProjectConfiguration(tree, options.project);
   const indexFilePath = joinPathFragments(project.root, 'main.ts');
   const { fileName, className, constantName } = names(options.name);
@@ -45,6 +44,7 @@ export async function stackGenerator(
     },
   ]);
   tree.write(indexFilePath, changes);
+
   await formatFiles(tree);
 }
 
