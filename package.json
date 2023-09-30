@@ -9,6 +9,7 @@
     "@nx/plugin": "^16.9.1",
     "@swc/helpers": "~0.5.2",
     "cdktf": "latest",
+    "esbuild": "^0.19.4",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

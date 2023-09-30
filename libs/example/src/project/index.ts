@@ -1,10 +1,10 @@
 import { TerraformStack } from 'cdktf';
 import { Construct } from 'constructs';
 
-class TestStack extends TerraformStack {
+class ProjectStack extends TerraformStack {
   constructor(
     scope: Construct,
-    public id: string = 'test',
+    public id: string = 'project',
     ...dependencies: TerraformStack[]
   ) {
     super(scope, id);
@@ -14,4 +14,4 @@ class TestStack extends TerraformStack {
   }
 }
 
-export default TestStack;
+export default ProjectStack;
