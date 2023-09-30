@@ -1,6 +1,10 @@
-# nx-cdktf
+# nx-cdktf [![npm version](https://badge.fury.io/js/nx-cdktf.svg)](https://badge.fury.io/js/nx-cdktf)
 
-NX wrapper for [Terraform CDK](https://github.com/hashicorp/terraform-cdk) command-line tool for Typescript. It provides:
+## NX wrapper for Terraform CDK command-line tool for Typescript.
+
+This plugin allows integrating Terraform CDK (aka [CDKTF](https://github.com/hashicorp/terraform-cdk)) into your existing [NX](https://nx.dev/) codebase. It makes it easier to manage your cloud infrastructure from the same monorepo as your application(s) codebase.
+
+It provides:
 
 - Project generator
 - Stack generator (opinionated)
@@ -9,9 +13,12 @@ NX wrapper for [Terraform CDK](https://github.com/hashicorp/terraform-cdk) comma
   - Deploy
   - Destroy
 
+> Note: This plugin is just a wrapper for CDKTF for Typescript, therefore this documentation does not include any CDKTF specific instructions. <br/>
+> For this plugin to work properly you need to have the CDKTF CLI set up locally. Follow the official [Getting Started Guide](https://developer.hashicorp.com/terraform/tutorials/cdktf/cdktf-install#prerequisites) (if you haven't already).
+
 ## Setting up the NX CDKTF plugin
 
-Adding the Prisma plugin to an existing Nx workspace can be done with the following:
+Adding the CDKTF plugin to an existing Nx workspace can be done with the following:
 
 ```sh
 npm i -D nx-cdktf
@@ -40,7 +47,7 @@ By default, the application will be configured with:
 - NX Configuration and main.ts file
 - A set of targets and executors to invoke common CDKTF commands to manage your application. You can add more executors later.
 
-We can then call `synth`,  `deploy` and `destroy` the following commands:
+We can then call `synth`, `deploy` and `destroy` the following commands:
 
 ```bash
 nx synth appName
@@ -56,7 +63,7 @@ Here is a list of all the executors and generators available from this package:
 
 ### Executors
 
-- synth: Synthesizes Terraform code for the given app in a directory.                   
+- synth: Synthesizes Terraform code for the given app in a directory.
 - deploy: Deploy the given stacks
 - destroy: Destroy the given stacks
 
@@ -67,6 +74,6 @@ Here is a list of all the executors and generators available from this package:
 <br/>
 <br/>
 
-
 ---
+
 ### 🇺🇦 Slava Ukraine! 🇺🇦

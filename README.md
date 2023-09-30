@@ -1,8 +1,12 @@
-# NxPlugins 🇺🇦
+# NxPlugins
+## nx-cdktf [![npm version](https://badge.fury.io/js/nx-cdktf.svg)](https://badge.fury.io/js/nx-cdktf) [![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
 
-# nx-cdktf
 
-NX wrapper for [Terraform CDK](https://github.com/hashicorp/terraform-cdk) command-line tool for Typescript. It provides:
+### NX wrapper for Terraform CDK command-line tool for Typescript.
+
+This plugin allows integrating Terraform CDK (aka [CDKTF](https://github.com/hashicorp/terraform-cdk)) into your existing [NX](https://nx.dev/) codebase. It makes it easier to manage your cloud infrastructure from the same monorepo as your application(s) codebase.
+
+It provides:
 
 - Project generator
 - Stack generator (opinionated)
@@ -11,9 +15,12 @@ NX wrapper for [Terraform CDK](https://github.com/hashicorp/terraform-cdk) comma
   - Deploy
   - Destroy
 
-## Setting up the NX CDKTF plugin
+> Note: This plugin is just a wrapper for CDKTF for Typescript, therefore this documentation does not include any CDKTF specific instructions. <br/>
+> For this plugin to work properly you need to have the CDKTF CLI set up locally. Follow the official [Getting Started Guide](https://developer.hashicorp.com/terraform/tutorials/cdktf/cdktf-install#prerequisites) (if you haven't already).
 
-Adding the Prisma plugin to an existing Nx workspace can be done with the following:
+### Setting up the NX CDKTF plugin
+
+Adding the CDKTF plugin to an existing Nx workspace can be done with the following:
 
 ```sh
 npm i -D nx-cdktf
@@ -27,9 +34,9 @@ pnpm i -D nx-cdktf
 yarn add -D nx-cdktf
 ```
 
-## Using the CDKTF Plugin
+### Using the CDKTF Plugin
 
-### Configuring an application
+#### Configuring an application
 
 It's straightforward to setup your application:
 
@@ -52,17 +59,17 @@ nx destroy appName
 
 > Tip: You can change the location or rename your _cdktf.out_ folder, but it's best to leave it in the project root so you can run other CDKTF commands from the project folder.
 
-## Package reference
+### Package reference
 
 Here is a list of all the executors and generators available from this package:
 
-### Executors
+#### Executors
 
 - synth: Synthesizes Terraform code for the given app in a directory.
 - deploy: Deploy the given stacks
 - destroy: Destroy the given stacks
 
-### Generators
+#### Generators
 
 - init: Setup a new CDKTF Project
 
@@ -71,4 +78,4 @@ Here is a list of all the executors and generators available from this package:
 
 ---
 
-### 🇺🇦 Slava Ukraine! 🇺🇦
+## 🇺🇦 Slava Ukraine! 🇺🇦
