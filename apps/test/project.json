@@ -6,15 +6,11 @@
   "targets": {
     "synth": {
       "executor": "nx-cdktf:synth",
-      "options": {
-        "output": "apps/test/cdktf.out"
-      }
+      "options": {}
     },
     "deploy": {
       "executor": "nx-cdktf:deploy",
-      "options": {
-        "output": "apps/test/cdktf.out"
-      }
+      "options": {}
     },
     "destroy": {
       "executor": "nx-cdktf:destroy",

@@ -5,6 +5,11 @@
   "description": "Deploy the given stacks",
   "type": "object",
   "properties": {
+    "entry": {
+      "type": "string",
+      "default": "main.ts",
+      "description": "The path of the entrypoint file (relative to the project root)."
+    },
     "stacks": {
       "type": "array",
       "items": {

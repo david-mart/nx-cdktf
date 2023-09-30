@@ -5,6 +5,11 @@
   "description": "Generate CDK Constructs for Terraform providers and modules.",
   "type": "object",
   "properties": {
+    "entry": {
+      "type": "string",
+      "default": "main.ts",
+      "description": "The path of the entrypoint file (relative to the project root)."
+    },
     "output": {
       "type": "string",
       "default": "dist",

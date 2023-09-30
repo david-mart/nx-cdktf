@@ -5,6 +5,11 @@
   "description": "List installed providers",
   "type": "object",
   "properties": {
+    "entry": {
+      "type": "string",
+      "default": "main.ts",
+      "description": "The path of the entrypoint file (relative to the project root)."
+    },
     "json": {
       "type": "boolean",
       "default": false,

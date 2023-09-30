@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {},
+  "files": [],
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "cdktf.out"]
+}

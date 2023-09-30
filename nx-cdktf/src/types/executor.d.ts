@@ -3,9 +3,10 @@ import { ProjectConfiguration, TargetConfiguration } from '@nx/devkit';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface CDKTFExecutorBaseOptions {
   /**
-   * The name of the NX project
+   * The path of the entrypoint file (relative to the project root)
+   * @default: "main.ts"
    */
-  project?: string;
+  entry: string;
 }
 export interface CDKTFSynthOptions extends CDKTFExecutorBaseOptions {
   /**

@@ -5,6 +5,11 @@
   "description": "Add one or more Terraform providers to your project.",
   "type": "object",
   "properties": {
+    "entry": {
+      "type": "string",
+      "default": "main.ts",
+      "description": "The path of the entrypoint file (relative to the project root)."
+    },
     "provider": {
       "description": "Name of the provider to add. Can include a version constraint (e.g. google@~>9.0.0)",
       "type": "array",
