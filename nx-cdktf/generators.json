@@ -1,0 +1,14 @@
+{
+  "generators": {
+    "init": {
+      "factory": "./src/generators/init/generator",
+      "schema": "./src/generators/init/schema.json",
+      "description": "init generator"
+    },
+    "stack": {
+      "factory": "./src/generators/stack/generator",
+      "schema": "./src/generators/stack/schema.json",
+      "description": "stack generator"
+    }
+  }
+}
