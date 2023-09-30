@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "Synth executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "entry": {
+      "type": "string",
+      "default": "main.ts",
+      "description": "The entrypoint file (relative to the working directory)"
+    },
+    "provider": {
+      "description": "Name of the provider to add. Can include a version constraint (e.g. google@~>9.0.0)",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "required": true,
+      "x-prompt": {
+        "message": "Enter provider name",
+        "type": "input"
+      }
+    },
+    "forceLocal": {
+      "description": "Force local provider installation, even if pre-built provider exists",
+      "type": "boolean"
+    }
+  },
+  "required": []
+}

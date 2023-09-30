@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "Synth executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "entry": {
+      "type": "string",
+      "default": "main.ts",
+      "description": "The entrypoint file (relative to the working directory)"
+    },
+    "json": {
+      "type": "boolean",
+      "default": false,
+      "description": "Get providers list as json"
+    }
+  },
+  "required": []
+}

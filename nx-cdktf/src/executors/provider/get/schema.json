@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "Synth executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "entry": {
+      "type": "string",
+      "default": "main.ts",
+      "description": "The entrypoint file (relative to the working directory)"
+    },
+    "output": {
+      "type": "string",
+      "default": "dist",
+      "description": "The output directory (relative to the working directory)"
+    },
+    "language": {
+      "type": "string",
+      "default": "typescript",
+      "description": "The output programming language. Only \"typescript\" is supported in the NX plugin."
+    },
+    "force": {
+      "type": "boolean",
+      "default": false,
+      "description": "Regenerates all generated constructs"
+    },
+    "parallelism": {
+      "type": "number",
+      "default": -1,
+      "description": "Number of concurrently generated provider / module bindings. Only applies for languages that are not Typescript (translated by JSII). Defaults to infinity, denoted by -1"
+    },
+    "showPerformanceInfo": {
+      "type": "boolean",
+      "default": false,
+      "description": "Shows performance information after generation"
+    }
+  },
+  "required": []
+}

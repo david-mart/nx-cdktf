@@ -4,30 +4,36 @@ export interface CDKTFExecutorBaseOptions {
    * @default: "main.ts"
    */
   entry: string;
-
+}
+export interface CDKTFSynthOptions extends CDKTFExecutorBaseOptions {
   /**
    * Output directory for the synthesized Terraform config
    * @default: "cdktf.out"
    */
   output: string;
-}
-export interface CDKTFSynthOptions extends CDKTFExecutorBaseOptions {
+
   /**
-   * Should `codeMakerOutput` existence check be performed? By default it will be checked if providers or modules are configured.
+   * Should `codeMakerOutput` existence check be performed? By default it will be checked if providers or modules are configured
    */
-  chechCodeMarkerOutput: boolean;
+  checCodeMarkerOutput: boolean;
 }
 
 export interface CDKTFDestroyOptions extends CDKTFExecutorBaseOptions {
   /**
+   * Deploy stacks matching the given ids. Required when more than one stack is present in the app.
+   * Leave empty to apply to all stacks.
+   */
+  stacks: string[];
+
+  /**
    * Auto approve
    */
-  autoApprove: boolean;
+  autoApprove?: boolean;
 
   /**
    * Don't check if all stacks specified in the command have their dependencies included as well
    */
-  ignoreMissingStackDependencies: boolean;
+  ignoreMissingStackDependencies?: boolean;
 
   /**
    * Number of concurrent CDKTF stacks to run. Defaults to infinity, denoted by -1
@@ -72,6 +78,12 @@ export interface CDKTFDestroyOptions extends CDKTFExecutorBaseOptions {
 
 export interface CDKTFDeployOptions extends CDKTFDestroyOptions {
   /**
+   * Output directory for the synthesized Terraform config
+   * @default: "cdktf.out"
+   */
+  output: string;
+
+  /**
    * Path to file where stack outputs will be written as JSON
    */
   outputsFile: string;
@@ -82,14 +94,89 @@ export interface CDKTFDeployOptions extends CDKTFDestroyOptions {
   outputsFileIncludeSensitiveOutputs: boolean;
 }
 
-export interface CDKTFExecutorCommands {
+export interface CDKTFProviderUpgradeOptions extends CDKTFExecutorBaseOptions {
+  /**
+   * Name of the provider to add. Can include a version constraint (e.g. aws@~>4.0).
+   */
+  provider: string[];
+}
+
+export interface CDKTFProviderAddOptions extends CDKTFProviderUpgradeOptions {
+  /**
+   * Force local provider installation, even if pre-built provider exists
+   */
+  forceLocal: boolean;
+}
+export interface CDKTFProviderGetOptions extends CDKTFExecutorBaseOptions {
+  /**
+   * Output directory for generated Constructs
+   */
+  output: string;
+
+  /**
+   * Output programming language. Only "typescript" is supported in the NX plugin.
+   */
+  language: 'typescript';
+
+  /**
+   * Regenerates all generated constructs
+   */
+  force: boolean;
+
+  /**
+   * Number of concurrently generated provider / module bindings. Only applies for languages that are not Typescript (translated by JSII). Defaults to infinity, denoted by -1
+   */
+  parallelism: number;
+
+  /**
+   * Shows performance information after generation
+   */
+  showPerformanceInfo: boolean;
+}
+export interface CDKTFProviderListOptions extends CDKTFExecutorBaseOptions {
+  /**
+   * Get providers list as json
+   */
+  json: boolean;
+}
+
+export interface CDKTFExecutorCommandOptions {
+  /**
+   * Synthesizes Terraform code for the given app in a directory
+   */
   synth: CDKTFSynthOptions;
-  deploy: CDKTFDestroyOptions;
+
+  /**
+   * Deploy the given stacks
+   */
+  deploy: CDKTFDeployOptions;
+
+  /**
+   * Destroy the given stacks
+   */
   destroy: CDKTFDestroyOptions;
+
+  /**
+   * Add one or more Terraform providers to your project.
+   */
+  'provider add': CDKTFProviderAddOptions;
+
+  /**
+   * Generate CDK Constructs for Terraform providers and modules.
+   */
+  'provider get': CDKTFProviderGetOptions;
+  'provider list': CDKTFProviderListOptions;
+  'provider upgrade': CDKTFProviderUpgradeOptions;
   // get: string;
   // import: string;
   // diff: string;
   // ls: string;
   // version: string;
   // init: string;
+}
+
+export interface CDKTFExecutorCommandArgs {
+  synth: [];
+  deploy: [];
+  destroy: [];
 }

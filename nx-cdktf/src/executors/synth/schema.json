@@ -1,16 +1,24 @@
 {
   "$schema": "http://json-schema.org/schema",
   "version": 2,
-  "title": "Synth executor",
-  "description": "",
+  "title": "cdktf synth",
+  "description": "Synthesizes Terraform code for the given app in a directory",
   "type": "object",
   "properties": {
     "entry": {
       "type": "string",
-      "default": "main.ts"
+      "default": "main.ts",
+      "description": "The path of the entrypoint file (relative to the project root)."
     },
     "output": {
-      "type": "string"
+      "type": "string",
+      "default": "cdktf.out",
+      "description": "Output directory for the synthesized Terraform config."
+    },
+    "checkCodeMarkerOutput": {
+      "type": "boolean",
+      "default": false,
+      "description": "Should `codeMakerOutput` existence check be performed? By default it will be checked if providers or modules are configured."
     }
   },
   "required": []

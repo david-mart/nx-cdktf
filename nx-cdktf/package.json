@@ -1,11 +1,12 @@
 {
   "name": "nx-cdktf",
+  "description": "NX Plugin for CDKTF",
   "author": {
     "name": "David Mart",
     "email": "david@martlabs.net"
   },
   "repository": "https://github.com/david-mart/nx-cdktf",
-  "version": "0.0.2",
+  "version": "0.2.0",
   "dependencies": {
     "@nx/devkit": "16.9.1",
     "@nx/plugin": "^16.9.1",

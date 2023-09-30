@@ -12,6 +12,11 @@ It provides:
   - Synth
   - Deploy
   - Destroy
+  - Provider
+    - Add
+    - Get
+    - List
+    - Upgrade
 
 > Note: This plugin is just a wrapper for CDKTF for Typescript, therefore this documentation does not include any CDKTF specific instructions. <br/>
 > For this plugin to work properly you need to have the CDKTF CLI set up locally. Follow the official [Getting Started Guide](https://developer.hashicorp.com/terraform/tutorials/cdktf/cdktf-install#prerequisites) (if you haven't already).
@@ -22,14 +27,6 @@ Adding the CDKTF plugin to an existing Nx workspace can be done with the followi
 
 ```sh
 npm i -D nx-cdktf
-```
-
-```sh
-pnpm i -D nx-cdktf
-```
-
-```sh
-yarn add -D nx-cdktf
 ```
 
 ## Using the CDKTF Plugin
@@ -47,12 +44,24 @@ By default, the application will be configured with:
 - NX Configuration and main.ts file
 - A set of targets and executors to invoke common CDKTF commands to manage your application. You can add more executors later.
 
-We can then call `synth`, `deploy` and `destroy` the following commands:
+We can then call the following commands:
 
 ```bash
+# executors
 nx synth appName
 nx deploy appName
 nx destroy appName
+
+
+nx run appName:add-provider google
+nx run appName:get-providers
+nx run appName:list-providers
+nx run appName:upgrade-provider google
+```
+
+```bash
+# generators
+nx g nx-cdktf:stack CloudRun --project appName
 ```
 
 > Tip: You can change the location or rename your _cdktf.out_ folder, but it's best to leave it in the project root so you can run other CDKTF commands from the project folder.

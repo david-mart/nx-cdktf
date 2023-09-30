@@ -1,16 +1,78 @@
 {
   "$schema": "http://json-schema.org/schema",
   "version": 2,
-  "title": "Synth executor",
-  "description": "",
+  "title": "cdktf destroy",
+  "description": "Destroy the given stacks",
   "type": "object",
   "properties": {
+    "stacks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": ["*"],
+      "description": "Deploy stacks matching the given ids. Required when more than one stack is present in the app. Leave empty to apply to all stacks."
+    },
+    "autoApprove": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to auto-approve before deployment"
+    },
     "entry": {
       "type": "string",
-      "default": "main.ts"
+      "default": "main.ts",
+      "description": "The entrypoint file (relative to the working directory)"
     },
-    "output": {
-      "type": "string"
+    "ignoreMissingStackDependencies": {
+      "type": "boolean",
+      "default": false,
+      "description": "Don't check if all stacks specified in the command have their dependencies included as well"
+    },
+    "parallelism": {
+      "type": "number",
+      "default": -1,
+      "description": "Number of concurrent CDKTF stacks to run. Defaults to infinity, denoted by -1"
+    },
+    "refreshOnly": {
+      "type": "boolean",
+      "default": false,
+      "description": "Select the \"refresh only\" planning mode, which checks whether remote objects still match the outcome of the most recent Terraform apply but does not propose any actions to undo any changes made outside of Terraform."
+    },
+    "terraformParallelism": {
+      "type": "number",
+      "default": 10,
+      "description": "Forwards value as the `-parallelism` flag to Terraform. By default, the this flag is not forwarded to Terraform. Note: This flag is not supported by remote / cloud backend"
+    },
+    "noColor": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disables terminal formatting sequences in the output."
+    },
+    "migrateState": {
+      "type": "boolean",
+      "default": false,
+      "description": "Pass this flag after switching state backends to approve a state migration for all targeted stacks"
+    },
+    "var": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "description": "Set a value for one of the input variables in the stack or stacks to apply. Use this option more than once to set more than one variable."
+    },
+    "varFile": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "description": "Load variable values from the given file, in addition to the default files terraform.tfvars and *.auto.tfvars. Use this option more than once to include more than one variables file."
+    },
+    "skipSynth": {
+      "type": "boolean",
+      "default": false,
+      "description": "Skip synthesis of the application, assume the synthesized Terraform code is already present and up to date"
     }
   },
   "required": []
