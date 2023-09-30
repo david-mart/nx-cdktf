@@ -1,10 +1,5 @@
-export interface CDKTFExecutorBaseOptions {
-  /**
-   * The path of the entrypoint file (relative to the project root)
-   * @default: "main.ts"
-   */
-  entry: string;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface CDKTFExecutorBaseOptions {}
 export interface CDKTFSynthOptions extends CDKTFExecutorBaseOptions {
   /**
    * Output directory for the synthesized Terraform config

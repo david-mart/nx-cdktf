@@ -18,11 +18,6 @@
       "default": false,
       "description": "Whether to auto-approve before deployment"
     },
-    "entry": {
-      "type": "string",
-      "default": "main.ts",
-      "description": "The entrypoint file (relative to the working directory)"
-    },
     "ignoreMissingStackDependencies": {
       "type": "boolean",
       "default": false,
