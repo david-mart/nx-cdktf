@@ -17,7 +17,6 @@
     },
     "checkCodeMarkerOutput": {
       "type": "boolean",
-      "default": false,
       "description": "Should `codeMakerOutput` existence check be performed? By default it will be checked if providers or modules are configured."
     }
   },

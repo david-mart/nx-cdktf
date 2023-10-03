@@ -7,6 +7,11 @@ export interface CDKTFExecutorBaseOptions {
    * @default: "main.ts"
    */
   entry: string;
+
+  /**
+   * TSConfig path. Defaults to tsconfig in the project root.
+   */
+  tsConfig?: string;
 }
 export interface CDKTFSynthOptions extends CDKTFExecutorBaseOptions {
   /**
@@ -29,7 +34,7 @@ export interface CDKTFDestroyOptions extends CDKTFExecutorBaseOptions {
   stacks: string[];
 
   /**
-   * Auto approve
+   * Auto approve. Only "true" is supported for now.
    */
   autoApprove?: boolean;
 

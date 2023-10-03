@@ -6,7 +6,7 @@
     "email": "david@martlabs.net"
   },
   "repository": "https://github.com/david-mart/nx-cdktf",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "dependencies": {
     "@nx/devkit": "16.9.1",
     "@nx/plugin": "^16.9.1",
