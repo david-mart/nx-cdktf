@@ -3,7 +3,7 @@ import { CDKTFExecutorCommandOptions } from '../types/executor';
 import * as esbuild from 'esbuild';
 import { spawn } from 'child_process';
 import { splitArgs } from './helpers';
-import { existsSync, mkdirSync, readFile, writeFile } from 'fs';
+import { existsSync, mkdirSync } from 'fs';
 import * as crypto from 'crypto';
 
 export const executeCDKTF = <
@@ -16,7 +16,7 @@ export const executeCDKTF = <
   ctx: ExecutorContext
 ) =>
   // eslint-disable-next-line no-async-promise-executor
-  new Promise(async (resolve, reject) => {
+  new Promise(async (resolve) => {
     ctx.projectName;
     // split positionals to pass as args
     const [positionals, extra] = splitArgs(options, args);
@@ -40,8 +40,7 @@ export const executeCDKTF = <
       // write: false,
       // external: ['cdktf'],
       format: 'cjs',
-      
-    })
+    });
 
     if (compiledJs.errors.length > 0) {
       for (const error of compiledJs.errors) {
@@ -63,7 +62,7 @@ export const executeCDKTF = <
           value.toString(),
         ]),
         // apply the args (stack name, etc.)
-        ...Object.values(positionals),
+        ...Object.values(positionals).flat(),
       ],
       {
         cwd: appRoot,
